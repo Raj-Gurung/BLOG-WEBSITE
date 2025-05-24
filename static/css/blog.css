@@ -50,8 +50,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 
-
-/* Dark mode styles */
+/* Dark mode */
 body.dark-mode {
   background-color: #121212;
   color: #f1f1f1;
@@ -68,8 +67,38 @@ body.dark-mode input {
   border-color: #444 !important;
 }
 
-body.dark-mode .btn-warning {
-  background-color: #bb86fc !important;
-  border-color: #bb86fc !important;
-  color: #000 !important;
+body.dark-mode .post-content {
+  color: limegreen;
+}
+
+body.dark-mode .card-text {
+  color: white;
+}
+
+body.dark-mode .card,
+body.dark-mode .card-body,
+body.dark-mode .post-content {
+  background-color: #1e1e1e !important;
+  color: white !important;
+  border-color: #444;
+}
+
+body.dark-mode a {
+  color: #90ee90;
+}
+
+body.dark-mode textarea,
+body.dark-mode input {
+  background-color: #2a2a2a !important;
+  color: #f1f1f1 !important;
+}
+
+/* Dark mode fix for the About section */
+body.dark-mode .blog-sidebar .bg-light {
+  background-color: #1e1e1e !important;
+  color: white !important;
+}
+
+body.dark-mode .about-title {
+  color: #90ee90 !important;
 }

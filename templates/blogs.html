@@ -9,42 +9,49 @@
                     <div class="text-muted fst-italic mb-2">Posted on {{ single_post.created_at }} by {{ single_post.author }}</div>
                     <a class="badge bg-warning text-decoration-none text-light" href="#!">{{ single_post.category }}</a>
                 </header>
-                <figure class="mb-4"><img class="img-fluid rounded" src="{{ single_post.blog_image.url }}" alt="..." /></figure>
-                <section class="mb-5">
+                <figure class="mb-4">
+                    <img class="img-fluid rounded" src="{{ single_post.blog_image.url }}" alt="..." />
+                </figure>
+                
+                <!-- dark mode  -->
+                <section class="mb-5 post-content">
                     <p class="fs-5 mb-4">{{ single_post.short_description }}</p>
                     <p class="fs-5 mb-4">{{ single_post.blog_body }}</p>
-                    <h4>Comments({{ comment_count }})</h4>
+
+                    <h4>Comments ({{ comment_count }})</h4>
                     {% if comments %}
-                     {% for comment in comments %}
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text mb-0">{{ comment }}</p>
-                                <span>
-                                    <small>{{ comment.user }}</small>
-                                    <small>{{ comment.created_at | timesince }} ago</small>
-                                </span>
+                        {% for comment in comments %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text mb-0">{{ comment }}</p>
+                                    <span>
+                                        <small>{{ comment.user }}</small>
+                                        <small>{{ comment.created_at | timesince }} ago</small>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                     {% endfor %}
+                        {% endfor %}
                     {% else %}
-                    No Comments Yet
+                        No Comments Yet
                     {% endif %}
-                    <div class="form-group">
+
+                    <div class="form-group mt-3">
                         {% if user.is_authenticated %}
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <textarea name="comment" class="form-control" placeholder="Write your Comment"></textarea>
-                                <input type="submit" class="btn btn-primary mt-2">
-                            </div>
-                        </form>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <textarea name="comment" class="form-control" placeholder="Write your Comment"></textarea>
+                                    <input type="submit" class="btn btn-primary mt-2">
+                                </div>
+                            </form>
                         {% else %}
-                         <p>Please <span><a href="{% url 'login' %}">Login</a></span> to write a comment!</p>
-                         {% endif %}
+                            <p>Please <span><a href="{% url 'login' %}">Login</a></span> to write a comment!</p>
+                        {% endif %}
                     </div>
                 </section>
             </article>
         </div>
+
         <div class="col-lg-4">
             <div class="card mb-4 p-3">
                 <h4 class="font-italic">Categories</h4>
@@ -53,13 +60,14 @@
                         <div class="col-sm-6">
                             <ul class="list-unstyled mb-0">
                                 {% for cat in categories %}
-                                <li><a href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a></li>
+                                    <li><a href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="card mb-4 p-3">
                 <h4 class="font-italic">Follow Us</h4>
                 <ol class="list-unstyled">

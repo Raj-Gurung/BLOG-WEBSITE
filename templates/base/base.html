@@ -5,22 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bloggers Heaven</title>
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS (Correct CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet" />
-    <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
   <body>
 
-    <!-- Header part -->
+    <!-- Header -->
     {% include 'base/header.html' %}
 
-    <!-- Main content part -->
-    {% block content %}
-    {% endblock %}
+    <!-- Main Content -->
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
 
     <!-- Footer -->
     {% include 'base/footer.html' %}
+
+    <!-- Bootstrap JS + dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Dark Mode Script -->
     <script>
@@ -34,11 +49,11 @@
           icon.classList.add('fa-sun-o');
         }
 
-        toggleBtn.addEventListener('click', function () {
+        toggleBtn?.addEventListener('click', function () {
           document.body.classList.toggle('dark-mode');
           const enabled = document.body.classList.contains('dark-mode');
-          icon.classList.toggle('fa-moon-o', !enabled);
-          icon.classList.toggle('fa-sun-o', enabled);
+          icon?.classList.toggle('fa-moon-o', !enabled);
+          icon?.classList.toggle('fa-sun-o', enabled);
           localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
         });
       });
