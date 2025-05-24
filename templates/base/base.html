@@ -1,10 +1,48 @@
-<!-- Header part -->
-{% include './header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloggers Heaven</title>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet" />
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
+  <body>
 
-<!-- Main content part -->
-{% block content %}
+    <!-- Header part -->
+    {% include 'base/header.html' %}
 
-{% endblock %}
+    <!-- Main content part -->
+    {% block content %}
+    {% endblock %}
 
-<!-- Footer -->
-{% include './footer.html' %}
+    <!-- Footer -->
+    {% include 'base/footer.html' %}
+
+    <!-- Dark Mode Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const icon = document.getElementById('darkModeIcon');
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+          icon.classList.remove('fa-moon-o');
+          icon.classList.add('fa-sun-o');
+        }
+
+        toggleBtn.addEventListener('click', function () {
+          document.body.classList.toggle('dark-mode');
+          const enabled = document.body.classList.contains('dark-mode');
+          icon.classList.toggle('fa-moon-o', !enabled);
+          icon.classList.toggle('fa-sun-o', enabled);
+          localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+        });
+      });
+    </script>
+
+  </body>
+</html>
