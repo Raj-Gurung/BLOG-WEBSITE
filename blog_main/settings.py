@@ -25,10 +25,10 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'django-insecure-%)2y&2i!xws4x@+^&o(qo3)&fj(##2@fau89dt=9(tq4j@=l*e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['rajgrz.pythonanywhere.com']
-CSRF_TRUSTED_ORIGINS = ['https://rajgrz.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
 
 # Application definition
 
@@ -81,14 +81,12 @@ WSGI_APPLICATION = 'blog_main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RajGrz$default',
-        'USER': 'RajGrz',
-        'PASSWORD': 'Shikazu8848', 
-        'HOST': 'RajGrz.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -126,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
 
 
 # Default primary key field type
